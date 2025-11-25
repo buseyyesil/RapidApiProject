@@ -1,0 +1,56 @@
+﻿@model List<RapidApiConsume.Models.BookingApiViewModel.Result>
+@{
+    Layout = null;
+    int count = 0;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <br /><br />
+        <h2>Otel Listesi</h2>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Otel Adı</th>
+                        <th>Otel Puanı</th>
+                        <th>Değerlendirme</th>
+                        <th>Yorum Sayısı</th>
+                        <th>Otel Detaylar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.name</td>
+                            <td>@item.reviewScore</td>
+                            <td>@item.reviewScoreWord</td>
+                            <td>@item.reviewCount</td>
+                            <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">Henüz otel verisi yok.</div>
+        }
+    </div>
+</body>
+</html>

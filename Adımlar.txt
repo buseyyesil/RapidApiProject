@@ -1,0 +1,21 @@
+﻿api testi ve swagger
+
+
+
+APİ CONSUME ETMEK NE DEMEKTİR ?
+
+Yani “API consume etmek”, bir API’yi kullanmak demektir.
+Başka bir deyişle:
+
+Bir web servisine (API’ye) istek (request) gönderip, cevap (response) alıp bu veriyi uygulamana entegre etme işlemidir
+🧠 Özet
+Terim	|  Anlamı
+API (Application Programming Interface)	Farklı uygulamaların birbiriyle veri alışverişi yapmasını sağlayan köprü
+Consume etmek	API’den veri çekmek / kullanmak
+Request	API’ye gönderilen istek (örneğin GET, POST)
+Response	API’nin döndürdüğü cevap (örneğin JSON)
+
+Bir restoranda garson = API gibidir 🍽️
+Sen siparişi söylersin → bu bir request’tir.
+Garson (API) mutfağa gider ve sonucu getirir → bu response’tur.
+Sen de o yemeği (veriyi) kullanırsın.

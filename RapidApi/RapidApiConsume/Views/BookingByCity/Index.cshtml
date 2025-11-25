@@ -1,0 +1,75 @@
+﻿@model List<RapidApiConsume.Models.BookingApiViewModel.Result>
+@{
+    Layout = null;
+    int count = 0;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <br /><br />
+        <h2>Şehre Göre Otel Arama</h2>
+
+        @using (Html.BeginForm("Index", "BookingByCity", FormMethod.Get))
+        {
+            <div class="mb-3">
+                <label class="form-label">Şehir ID Bilgisini Giriniz</label>
+                <input type="text" class="form-control" name="cityID" placeholder="Örn: -755070 (İstanbul)" />
+                <small class="form-text text-muted">
+                    Popüler şehirler: İstanbul: -755070, Paris: -1456928, Londra: -1829149
+                </small>
+            </div>
+            <button class="btn btn-primary">Şehir İçin Otelleri Listele</button>
+        }
+
+        <br />
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <h3>Otel Listesi (@Model.Count otel bulundu)</h3>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Otel Adı</th>
+                        <th>Otel Puanı</th>
+                        <th>Değerlendirme</th>
+                        <th>Yorum Sayısı</th>
+                        <th>Otel Detaylar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.name</td>
+                            <td>
+                                <span class="badge bg-success">@item.reviewScore / 10</span>
+                            </td>
+                            <td>@item.reviewScoreWord</td>
+                            <td>@item.reviewCount</td>
+                            <td>
+                                <a href="#" class="btn btn-outline-dark btn-sm">Detaylar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else if (ViewBag.Error == null)
+        {
+            <div class="alert alert-info">Aramak için yukarıdaki forma şehir ID girin.</div>
+        }
+    </div>
+</body>
+</html>
