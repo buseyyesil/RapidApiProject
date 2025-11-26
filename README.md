@@ -55,7 +55,6 @@ ViewComponent
 
 ![Rezervasyon](screenshots/5.png)
 
-![Rezervasyon](screenshots/6.png)
 
 ![Rezervasyon](screenshots/8.png)
 
